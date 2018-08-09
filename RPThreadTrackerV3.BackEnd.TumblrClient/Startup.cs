@@ -3,21 +3,21 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace RPThreadTrackerV3.BackEnd
+namespace RPThreadTrackerV3.BackEnd.TumblrClient
 {
     using System.Diagnostics.CodeAnalysis;
-    using AutoMapper;
+    using DontPanic.TumblrSharp;
+    using Infrastructure.Providers;
+    using Infrastructure.Services;
+    using Interfaces;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using Models.Configuration;
     using NLog;
-    using NLog.Extensions.Logging;
-    using NLog.Web;
-    using RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers;
-    using RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration;
 
     /// <summary>
     /// .NET Core application startup class.
@@ -47,9 +47,13 @@ namespace RPThreadTrackerV3.BackEnd
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<GlobalExceptionHandlerAttribute>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IPolicyProvider, PolicyProvider>();
+            services.AddScoped<ITumblrClientFactory, TumblrClientFactory>();
+            services.AddScoped<ITumblrSharpFactoryWrapper, TumblrSharpFactoryWrapper>();
+            services.AddScoped<IPolicyUtilityProvider, PolicyUtilityProvider>();
             services.AddCors();
             services.AddMvc();
-            services.AddAutoMapper();
         }
 
         /// <summary>

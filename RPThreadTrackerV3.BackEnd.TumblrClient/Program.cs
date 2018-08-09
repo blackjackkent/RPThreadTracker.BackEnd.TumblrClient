@@ -3,15 +3,14 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using System;
-using Microsoft.Extensions.Logging;
-
 namespace RPThreadTrackerV3.BackEnd.TumblrClient
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
     using NLog.Web;
 
     /// <summary>
@@ -26,7 +25,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient
         /// <param name="args">The application arguments.</param>
         public static void Main(string[] args)
         {
-            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
                 logger.Debug("Initializing RPThreadTrackerV3.BackEnd.TumblrClient");

@@ -19,14 +19,6 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration
         public string NewsBlogShortname { get; set; }
 
         /// <summary>
-        /// Gets or sets the application settings related to cross-origin requests.
-        /// </summary>
-        /// <value>
-        /// The application settings related to cross-origin requests.
-        /// </value>
-        public CorsAppSettings Cors { get; set; }
-
-        /// <summary>
         /// Gets or sets the application settings that are secure in nature.
         /// </summary>
         /// <value>
