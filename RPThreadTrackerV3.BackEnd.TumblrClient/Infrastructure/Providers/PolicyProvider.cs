@@ -9,9 +9,9 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers
     using System.Net;
     using System.Threading.Tasks;
     using DontPanic.TumblrSharp;
+    using Interfaces;
     using Polly;
     using Polly.Wrap;
-    using Interfaces;
 
     /// <inheritdoc />
     public class PolicyProvider : IPolicyProvider

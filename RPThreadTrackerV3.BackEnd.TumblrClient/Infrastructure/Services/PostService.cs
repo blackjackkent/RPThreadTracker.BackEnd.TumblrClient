@@ -13,13 +13,13 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
     using DontPanic.TumblrSharp;
     using DontPanic.TumblrSharp.Client;
     using DontPanic.TumblrSharp.OAuth;
+    using Interfaces;
     using Microsoft.Extensions.Options;
     using Models.Configuration;
     using Models.DataModels;
     using Models.RequestModels;
     using Models.ResponseModels;
     using Polly;
-    using Interfaces;
 
     /// <inheritdoc />
     public class PostService : IPostService

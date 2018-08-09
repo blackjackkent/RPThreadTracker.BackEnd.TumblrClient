@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPThreadTrackerV3.BackEnd.TumblrClient", "RPThreadTrackerV3.BackEnd.TumblrClient\RPThreadTrackerV3.BackEnd.TumblrClient.csproj", "{CE1563C1-8462-43C7-88F9-4E2AEEF0B779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPThreadTrackerV3.BackEnd.TumblrClient", "RPThreadTrackerV3.BackEnd.TumblrClient\RPThreadTrackerV3.BackEnd.TumblrClient.csproj", "{CE1563C1-8462-43C7-88F9-4E2AEEF0B779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPThreadTrackerV3.BackEnd.TumblrClient.Test", "RPThreadTrackerV3.BackEnd.TumblrClient.Test\RPThreadTrackerV3.BackEnd.TumblrClient.Test.csproj", "{1BCABAE5-33AE-4106-902E-05BB8C31BF0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CE1563C1-8462-43C7-88F9-4E2AEEF0B779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE1563C1-8462-43C7-88F9-4E2AEEF0B779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE1563C1-8462-43C7-88F9-4E2AEEF0B779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BCABAE5-33AE-4106-902E-05BB8C31BF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BCABAE5-33AE-4106-902E-05BB8C31BF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BCABAE5-33AE-4106-902E-05BB8C31BF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BCABAE5-33AE-4106-902E-05BB8C31BF0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

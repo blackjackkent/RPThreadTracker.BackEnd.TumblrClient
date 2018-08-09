@@ -12,8 +12,8 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers
     using DontPanic.TumblrSharp;
     using DontPanic.TumblrSharp.Client;
     using DontPanic.TumblrSharp.OAuth;
-    using Newtonsoft.Json;
     using Interfaces;
+    using Newtonsoft.Json;
 
     /// <inheritdoc />
     [ExcludeFromCodeCoverage]
