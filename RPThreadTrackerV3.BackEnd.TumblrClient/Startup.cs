@@ -5,32 +5,19 @@
 
 namespace RPThreadTrackerV3.BackEnd
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
-    using System.Text;
     using AutoMapper;
-    using Infrastructure.Data;
-    using Infrastructure.Data.Entities;
-    using Infrastructure.Data.Seeders;
-    using Infrastructure.Providers;
-    using Infrastructure.Services;
-    using Interfaces.Data;
-    using Interfaces.Services;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Internal;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using Microsoft.IdentityModel.Tokens;
-    using Models.Configuration;
     using NLog;
     using NLog.Extensions.Logging;
     using NLog.Web;
+    using RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers;
+    using RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration;
 
     /// <summary>
     /// .NET Core application startup class.
@@ -55,54 +42,11 @@ namespace RPThreadTrackerV3.BackEnd
         /// <param name="services">The application service collection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = Configuration.GetConnectionString("Database");
-            services.AddDbContext<TrackerContext>(options =>
-            {
-                options.UseSqlServer(connection);
-                options.ReplaceService<IEntityMaterializerSource, CustomEntityMaterializerSource>();
-            });
-            services.AddIdentity<IdentityUser, IdentityRole>(options => { options.User.AllowedUserNameCharacters = string.Empty; })
-                .AddEntityFrameworkStores<TrackerContext>()
-                .AddDefaultTokenProviders();
-            services.AddTransient<RoleInitializer>();
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidIssuer = Configuration["Tokens:Issuer"],
-                        ValidAudience = Configuration["Tokens:Issuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"])),
-                        ClockSkew = TimeSpan.Zero
-                    };
-                })
-                .AddCookie(options =>
-                {
-                    options.SlidingExpiration = true;
-                });
-
             services.AddOptions();
             services.Configure<AppSettings>(Configuration);
 
-            services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IThreadService, ThreadService>();
-            services.AddScoped<ICharacterService, CharacterService>();
-            services.AddScoped<IExporterService, ExporterService>();
-            services.AddScoped<IPublicViewService, PublicViewService>();
-            services.AddScoped<IEmailClient, SendGridEmailClient>();
-            services.AddScoped<IRepository<Thread>, ThreadRepository>();
-            services.AddScoped<IRepository<Thread>, ThreadRepository>();
-            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-            services.AddSingleton(typeof(IDocumentRepository<>), typeof(BaseDocumentRepository<>));
-            services.AddSingleton(typeof(IDocumentClient), typeof(DocumentDbClient));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IEmailBuilder, EmailBuilder>();
-            services.AddScoped<IPasswordHasher<IdentityUser>, CustomPasswordHasher>();
             services.AddScoped<GlobalExceptionHandlerAttribute>();
-            services.AddScoped<DisableDuringMaintenanceFilterAttribute>();
             services.AddCors();
             services.AddMvc();
             services.AddAutoMapper();
@@ -117,8 +61,6 @@ namespace RPThreadTrackerV3.BackEnd
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddNLog();
-
-            app.AddNLogWeb();
             app.UseAuthentication();
             app.UseCors(builder =>
                 builder.WithOrigins(Configuration["Cors:CorsUrl"].Split(',')).AllowAnyHeader().AllowAnyMethod());
