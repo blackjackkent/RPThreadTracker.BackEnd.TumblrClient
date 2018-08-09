@@ -3,6 +3,9 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System;
+using Microsoft.Extensions.Logging;
+
 namespace RPThreadTrackerV3.BackEnd.TumblrClient
 {
     using System.Diagnostics.CodeAnalysis;
@@ -23,8 +26,21 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient
         /// <param name="args">The application arguments.</param>
         public static void Main(string[] args)
         {
-            var host = BuildWebHost(args);
-            host.Run();
+            var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+            try
+            {
+                logger.Debug("Initializing RPThreadTrackerV3.BackEnd.TumblrClient");
+                BuildWebHost(args).Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Stopped RPThreadTrackerV3.BackEnd.TumblrClient");
+                throw;
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         /// <summary>
@@ -44,6 +60,11 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient
                         .AddJsonFile("appsettings.secure.json", true, true)
                         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
                         .AddEnvironmentVariables();
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Trace);
                 })
                 .UseNLog()
                 .Build();
