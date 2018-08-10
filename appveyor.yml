@@ -4,6 +4,10 @@
     op_build_user_email: "blackjacksoftwaredev@gmail.com"
     access_token:
       secure: +a4Xdh3uSTmspoFY4D1h9y+4I/tUz7SjN77rjIf6mhAj1ktE5khxA9f2FvjZqyv5
+    docker_username:
+      secure: i7vL6WwbHcNT8CXS2NreS6UlT5H41zuQdYy6XdDpE5w=
+    docker_password:
+      secure: ImLoJXsmtSnRleercV7SeA==
   version: '1.0.{build}'
   image: Visual Studio 2017
   branches:
@@ -26,6 +30,7 @@
     publish_wap_xcopy: true
   build_script:
     - cmd: dotnet publish RPThreadTrackerV3.BackEnd.TumblrClient.sln -c Release
+    - ps: docker build -t blackjacksoftware/rpthreadtrackerv3.backend.tumblrclient .
   after_build:
     - ps: |
           cd $env:APPVEYOR_BUILD_FOLDER\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1
@@ -64,6 +69,7 @@
       type: WebDeployPackage
     - path: WebSiteZip.zip
       name: WebSiteZip
-  deploy:
-    - provider: Environment
-      name: RPThreadTrackerV3-BackEnd-TumblrClient-Linux
+  deploy_script:
+    ps: |
+      docker login -u="$env:docker_username" -p="$env:docker_password"
+      docker push blackjacksoftware/rpthreadtrackerv3.backend.tumblrclient
