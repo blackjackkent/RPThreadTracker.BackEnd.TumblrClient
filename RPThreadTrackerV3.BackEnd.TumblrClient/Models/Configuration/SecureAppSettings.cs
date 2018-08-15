@@ -11,14 +11,6 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration
     public class SecureAppSettings
     {
         /// <summary>
-        /// Gets or sets the Tumblr API key.
-        /// </summary>
-        /// <value>
-        /// The Tumblr API key.
-        /// </value>
-        public string TumblrApiKey { get; set; }
-
-        /// <summary>
         /// Gets or sets the Tumblr consumer key.
         /// </summary>
         /// <value>

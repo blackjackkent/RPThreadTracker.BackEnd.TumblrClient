@@ -2,7 +2,7 @@
   -register:user \
   -output:coverage.xml \
   -target:"dotnet.exe" \
-  -targetargs:"test RPThreadTrackerV3.BackEnd.Test/RPThreadTrackerV3.BackEnd.TumblrClient.Test.csproj -c Release" \
+  -targetargs:"test RPThreadTrackerV3.BackEnd.TumblrClient.Test/RPThreadTrackerV3.BackEnd.TumblrClient.Test.csproj -c Release" \
   -filter:"+[RPThreadTrackerV3.BackEnd.TumblrClient*]* -[*Test]*" \
   -excludebyattribute:System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute \
   -hideskipped:Attribute \
