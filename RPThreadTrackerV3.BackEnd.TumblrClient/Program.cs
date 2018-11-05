@@ -42,30 +42,30 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient
 			}
 		}
 
-		/// <summary>
-		/// Builds the web host.
-		/// </summary>
-		/// <param name="args">The application arguments.</param>
-		/// <returns>Web host instance.</returns>
-		public static IWebHost BuildWebHost(string[] args) =>
-			WebHost.CreateDefaultBuilder(args)
-				.UseStartup<Startup>()
-				.ConfigureAppConfiguration((builderContext, config) =>
-				{
-					var env = builderContext.HostingEnvironment;
-					config.Sources.Clear();
-					config
-						.AddJsonFile("appsettings.json", false, true)
-						.AddJsonFile("appsettings.secure.json", true, true)
-						.AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
-						.AddEnvironmentVariables();
-				})
-				.ConfigureLogging(logging =>
-				{
-					logging.ClearProviders();
-					logging.SetMinimumLevel(LogLevel.Debug);
-				})
-				.UseNLog()
-				.Build();
-	}
+        /// <summary>
+        /// Builds the web host.
+        /// </summary>
+        /// <param name="args">The application arguments.</param>
+        /// <returns>Web host instance.</returns>
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    var env = builderContext.HostingEnvironment;
+                    config.Sources.Clear();
+                    config
+                        .AddJsonFile("appsettings.json", false, true)
+                        .AddJsonFile("appsettings.secure.json", true, true)
+                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
+                        .AddEnvironmentVariables();
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Information);
+                })
+                .UseNLog()
+                .Build();
+    }
 }
