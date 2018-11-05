@@ -63,7 +63,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.SetMinimumLevel(LogLevel.Trace);
+                    logging.SetMinimumLevel(LogLevel.Information);
                 })
                 .UseNLog()
                 .Build();
