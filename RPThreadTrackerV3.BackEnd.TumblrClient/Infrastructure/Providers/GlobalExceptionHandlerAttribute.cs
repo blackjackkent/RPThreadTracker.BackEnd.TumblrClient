@@ -32,7 +32,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers
         /// <inheritdoc />
         public override void OnException(ExceptionContext context)
         {
-            _logger.LogError(context.Exception, $"Unhandled Exception: {context.Exception.Message}");
+            _logger.LogError(context.Exception, $"Unhandled Exception: {context.Exception.Message} {context.Exception.StackTrace}");
         }
     }
 }
