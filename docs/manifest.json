@@ -1,0 +1,504 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/projects/rpthreadtracker-backend-tumblrclient",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.BaseController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.BaseController.html",
+          "hash": "8xCXd9yDQ5cM+8cEBJqqIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.NewsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.NewsController.html",
+          "hash": "PYr3UhO2AYaYOM3ak9RHAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.ThreadController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.ThreadController.html",
+          "hash": "Wg81woLYX70mo0Hyf5c+Yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Controllers.html",
+          "hash": "lcLhjdNvuOxqHp+d6GgGqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.GlobalExceptionHandlerAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.GlobalExceptionHandlerAttribute.html",
+          "hash": "5CACOAcEw2lli72rIU4afQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.PolicyProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.PolicyProvider.html",
+          "hash": "e1WBAr6UyupeDeie4eY6Rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.PolicyUtilityProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.PolicyUtilityProvider.html",
+          "hash": "S6xQFMzV9/XZKbHTrszGSg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.TumblrSharpClientWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.TumblrSharpClientWrapper.html",
+          "hash": "+RVRhDa4l1PCxkC2WWesWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.TumblrSharpFactoryWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.TumblrSharpFactoryWrapper.html",
+          "hash": "HRNMP/Ap9K/sA50nso9JgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Providers.html",
+          "hash": "l55BFOInSf10yQ0pefsRtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services.PostService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services.PostService.html",
+          "hash": "WoV32mWn5MdFybvxe2TqaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services.html",
+          "hash": "+5kd4lavYIB3BrZwHc5wAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPolicyProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPolicyProvider.html",
+          "hash": "nsha7FLcsi0dBn4Wtx+IUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPolicyUtilityProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPolicyUtilityProvider.html",
+          "hash": "I1ID5HJ3fS4wxPLbm2wkVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPostAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPostAdapter.html",
+          "hash": "IGGED86mGlbDtSPzj50RmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPostService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.IPostService.html",
+          "hash": "K+DX4CXGK/wv0z0cAvXH0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.ITumblrSharpClientWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.ITumblrSharpClientWrapper.html",
+          "hash": "BTbl+Jpj80XMGAbBLhN06A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.ITumblrSharpFactoryWrapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.ITumblrSharpFactoryWrapper.html",
+          "hash": "wX/+ZI5rxCeqHwOt71gr4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Interfaces.html",
+          "hash": "sP9pvqvsXYJVbqgkL0dXJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.AppSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.AppSettings.html",
+          "hash": "KJHFbsduWHRYdgtYqg/GYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.SecureAppSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.SecureAppSettings.html",
+          "hash": "22srPT/mMYztx8v1Wmph/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.Configuration.html",
+          "hash": "h0jvQg93kEzLOyHAMI7w0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.DataModels.PostAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.DataModels.PostAdapter.html",
+          "hash": "wSFxw89deFiM7PXmYiRgkw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.DataModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.DataModels.html",
+          "hash": "U02DHnC6xxSEurY9iL+F5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.RequestModels.ThreadStatusRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.RequestModels.ThreadStatusRequest.html",
+          "hash": "m+DOzPa93gkjt6vJOt5jQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.RequestModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.RequestModels.html",
+          "hash": "WyLQxtHCCGXbkMPFOI85XA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.NewsPostDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.NewsPostDto.html",
+          "hash": "hjNPEsGh3RS21ARxt8O+Fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.ThreadStatusDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.ThreadStatusDto.html",
+          "hash": "aNO97eO3CdF+Zi8XPYqz7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels.html",
+          "hash": "pvnTFkFHwqz/PhZ+w6MB6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Program.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Program.html",
+          "hash": "jX08Vgdk7QlmL7yqyr9JLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.Startup.html",
+          "hash": "FI/9UPiZSyUMYeIl8TpMYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Documentation/api/RPThreadTrackerV3.BackEnd.TumblrClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/RPThreadTrackerV3.BackEnd.TumblrClient.html",
+          "hash": "dpJQ0vVDwvs7gVnPsQolPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "3N9J2DHHzVukRzybKMq9Ng=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Documentation/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "V7nBGrdYNW5DcsmskRy4UQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/gettingstarted/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "gettingstarted/index.html",
+          "hash": "brpsPHl7NQmULRz4U2y0QA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Documentation/gettingstarted/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "gettingstarted/toc.html",
+          "hash": "E69E3IelZHbYQLBvpbvKwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Documentation/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "oSFhv3lj7zCdQhLWPXFONw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Toc",
+      "source_relative_path": "Documentation/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+6qqZyB7Pb87VoZaWodoYw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
