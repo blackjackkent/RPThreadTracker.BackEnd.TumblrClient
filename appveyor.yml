@@ -25,3 +25,30 @@
   deploy:
     - provider: Environment
       name: RPThreadTrackerV3-TumblrClient-Prod
+-
+  version: '1.0.{build}'
+  image: Visual Studio 2017
+  branches:
+    only:
+    - development
+  init:
+    - cmd: git config --global core.autocrlf true
+  before_build:
+    - cmd: dotnet --version
+    - cmd: dotnet restore RPThreadTrackerV3.BackEnd.TumblrClient.sln --verbosity m
+  build_script:
+    - cmd: dotnet publish RPThreadTrackerV3.BackEnd.TumblrClient.sln -c Release
+  test_script:
+    - cmd: sh ./coverage.sh
+  after_test:
+    ps: |
+      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
+      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+      bash codecov.sh -f "coverage.xml"
+  artifacts:
+    - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
+      name: WebSite
+      type: WebDeployPackage
+  deploy:
+    - provider: Environment
+      name: RPThreadTrackerV3-TumblrClient-Staging
