@@ -17,7 +17,7 @@
     ps: |
       $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
       Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "RPThreadTrackerV3.BackEnd.TumblrClient.Test/coverage.opencover.xml"
+      bash codecov.sh -f "coverage.xml"
   artifacts:
     - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
       name: WebSite
