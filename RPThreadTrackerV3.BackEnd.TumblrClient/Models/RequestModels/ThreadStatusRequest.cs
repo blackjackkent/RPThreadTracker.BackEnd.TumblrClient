@@ -11,14 +11,22 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.RequestModels
     /// Request model containing data about a thread whose status should be retrieved.
     /// </summary>
     public class ThreadStatusRequest
-    {
-        /// <summary>
-        /// Gets or sets the post ID.
-        /// </summary>
-        /// <value>
-        /// The post ID.
-        /// </value>
-        public string PostId { get; set; }
+	{
+		/// <summary>
+		/// Gets or sets the tracker thread ID.
+		/// </summary>
+		/// <value>
+		/// The thread ID.
+		/// </value>
+		public int? ThreadId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the post ID.
+		/// </summary>
+		/// <value>
+		/// The post ID.
+		/// </value>
+		public string PostId { get; set; }
 
         /// <summary>
         /// Gets or sets the character URL identifier.

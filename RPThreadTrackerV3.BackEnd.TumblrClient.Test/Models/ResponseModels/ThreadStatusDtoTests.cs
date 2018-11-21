@@ -29,6 +29,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Models.ResponseModels
             _afterQueuedDate = DateTime.Now.Add(TimeSpan.FromHours(3));
             _request = new ThreadStatusRequest
             {
+				ThreadId = 54321,
                 CharacterUrlIdentifier = "blackjackkent",
                 DateMarkedQueued = queuedDate,
                 PostId = "12345",
@@ -44,6 +45,16 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Models.ResponseModels
 
         public class Constructor : ThreadStatusDtoTests
         {
+	        [Fact]
+	        public void PopulatesThreadIdFromRequest()
+	        {
+				// Act
+				var dto = new ThreadStatusDto(null, _request);
+
+				// Assert
+		        dto.ThreadId.Should().Be(54321);
+	        }
+
             [Fact]
             public void ReturnsEmptyPropertiesIfPostIsNull()
             {

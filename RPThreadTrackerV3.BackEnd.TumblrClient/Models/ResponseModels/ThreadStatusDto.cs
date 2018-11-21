@@ -13,11 +13,16 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels
     /// View model representation of the status of a particular RP thread.
     /// </summary>
     public class ThreadStatusDto
-    {
-        /// <summary>
-        /// Gets or sets the post ID.
-        /// </summary>
-        public string PostId { get; set; }
+	{
+		/// <summary>
+		/// Gets or sets the tracker thread ID.
+		/// </summary>
+		public int? ThreadId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the post ID.
+		/// </summary>
+		public string PostId { get; set; }
 
         /// <summary>
         /// Gets or sets the most recent post date in the thread.
@@ -58,6 +63,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.ResponseModels
         /// <param name="request">The initial request object that triggered the retrieval of thread information.</param>
         public ThreadStatusDto(IPostAdapter post, ThreadStatusRequest request)
         {
+	        ThreadId = request.ThreadId;
             if (post == null)
             {
                 PostId = request.PostId;
