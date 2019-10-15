@@ -49,12 +49,12 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
         /// <inheritdoc />
         public async Task<ThreadStatusDto> GetPost(ThreadStatusRequest request)
         {
-            var characterUrlIdentifierNormalized = request.CharacterUrlIdentifier.ToLowerInvariant();
-            if (string.IsNullOrWhiteSpace(request.PostId) || string.IsNullOrWhiteSpace(characterUrlIdentifierNormalized))
+            var normalizedCharacterUrlIdentifier = request.CharacterUrlIdentifier?.ToLowerInvariant();
+            if (string.IsNullOrWhiteSpace(request.PostId) || string.IsNullOrWhiteSpace(normalizedCharacterUrlIdentifier))
             {
                 return null;
             }
-            var post = await RetrieveApiDataByPost(request.PostId, characterUrlIdentifierNormalized);
+            var post = await RetrieveApiDataByPost(request.PostId, normalizedCharacterUrlIdentifier);
             return new ThreadStatusDto(post, request);
         }
 
@@ -68,16 +68,15 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
 
         private async Task<IPostAdapter> RetrieveApiDataByPost(string postId, string characterUrlIdentifier)
         {
-            var characterUrlIdentifierNormalized = characterUrlIdentifier.ToLowerInvariant();
             return await _policyProvider.WrappedPolicy.ExecuteAsync(
                 async (context) =>
                 {
                     var parameters = new MethodParameterSet { { "notes_info", true }, { "id", postId } };
-                    var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifierNormalized, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
+                    var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
                     var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
                     return result.FirstOrDefault();
                 },
-                new Context("RetrieveApiDataByPost", new Dictionary<string, object>() { { "postId", postId }, { "characterUrlIdentifier", characterUrlIdentifierNormalized } }));
+                new Context("RetrieveApiDataByPost", new Dictionary<string, object>() { { "postId", postId }, { "characterUrlIdentifier", characterUrlIdentifier } }));
         }
 
         private async Task<IEnumerable<IPostAdapter>> RetrieveApiDataByTag(string tag, string blogUrlIdentifier, int limit = 5)
