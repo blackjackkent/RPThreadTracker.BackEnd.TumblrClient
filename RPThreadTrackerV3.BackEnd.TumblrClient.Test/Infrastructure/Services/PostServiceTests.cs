@@ -3,6 +3,9 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
 {
     using System.Globalization;
@@ -27,6 +30,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
         private readonly Mock<IPolicyProvider> _mockPolicyProvider;
         private readonly Mock<ITumblrSharpFactoryWrapper> _mockFactory;
         private readonly Mock<IOptions<AppSettings>> _mockConfigWrapper;
+        private ApiMethod _passedMethod;
 
         public PostServiceTests()
         {
@@ -55,7 +59,11 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                 .Returns(mockTumblrSharpClientWrapper.Object);
             mockTumblrSharpClientWrapper
                 .Setup(c => c.CallApiMethodAsync<Posts>(It.IsAny<BlogMethod>(), It.IsAny<CancellationToken>(), null))
-                .Returns(Task.FromResult(mockResult));
+                .Returns((ApiMethod method, CancellationToken token, IEnumerable<JsonConverter> converters) =>
+                {
+                    _passedMethod = method;
+                    return Task.FromResult(mockResult);
+                });
         }
 
         public class Constructor : PostServiceTests
@@ -170,6 +178,29 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                 // Assert
                 result.PostId.Should().Be(request.PostId);
                 result.LastPostUrl.Should().Be("http://www.test.com");
+            }
+
+            [Fact]
+            public async Task NormalizesCharacterUrl()
+            {
+                // Arrange
+                var request = new ThreadStatusRequest
+                {
+                    PostId = "123456",
+                    CharacterUrlIdentifier = "BlackjackKent"
+                };
+                var mockResult = new Posts
+                {
+                    Result = new List<BasePost>().ToArray()
+                };
+                InitMockClient(mockResult);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+
+                // Act
+                await postService.GetPost(request);
+
+                // Assert
+                _passedMethod.Url.Should().Contain("blackjackkent");
             }
         }
 

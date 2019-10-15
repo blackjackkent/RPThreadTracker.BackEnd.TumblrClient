@@ -49,11 +49,12 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
         /// <inheritdoc />
         public async Task<ThreadStatusDto> GetPost(ThreadStatusRequest request)
         {
-            if (string.IsNullOrWhiteSpace(request.PostId) || string.IsNullOrWhiteSpace(request.CharacterUrlIdentifier))
+            var normalizedCharacterUrlIdentifier = request.CharacterUrlIdentifier?.ToLowerInvariant();
+            if (string.IsNullOrWhiteSpace(request.PostId) || string.IsNullOrWhiteSpace(normalizedCharacterUrlIdentifier))
             {
                 return null;
             }
-            var post = await RetrieveApiDataByPost(request.PostId, request.CharacterUrlIdentifier);
+            var post = await RetrieveApiDataByPost(request.PostId, normalizedCharacterUrlIdentifier);
             return new ThreadStatusDto(post, request);
         }
 
