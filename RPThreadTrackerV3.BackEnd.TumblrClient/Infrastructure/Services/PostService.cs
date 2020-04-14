@@ -78,8 +78,8 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
                 {
                     var parameters = new MethodParameterSet { { "notes_info", true }, { "id", postId } };
                     var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
-                    _logger.LogInformation($"Client returned {JsonConvert.SerializeObject(posts)} when querying for {postId} and {characterUrlIdentifier}");
                     var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
+                    _logger.LogInformation($"Client returned {JsonConvert.SerializeObject(result)} when querying for {postId} and {characterUrlIdentifier}");
                     return result.FirstOrDefault();
                 },
                 new Context("RetrieveApiDataByPost", new Dictionary<string, object>() { { "postId", postId }, { "characterUrlIdentifier", characterUrlIdentifier } }));
