@@ -3,6 +3,8 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Microsoft.Extensions.Logging;
+
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
 {
     using System.Collections.Generic;
@@ -25,6 +27,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
     public class PostService : IPostService
     {
         private readonly IPolicyProvider _policyProvider;
+        private readonly ILogger<PostService> _logger;
         private readonly AppSettings _config;
         private readonly ITumblrSharpClientWrapper _client;
 
@@ -34,9 +37,10 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
         /// <param name="policyProvider">The policy provider.</param>
         /// <param name="config">The application configuration.</param>
         /// <param name="factory">The Tumblr factory wrapper.</param>
-        public PostService(IPolicyProvider policyProvider, IOptions<AppSettings> config, ITumblrSharpFactoryWrapper factory)
+        public PostService(IPolicyProvider policyProvider, IOptions<AppSettings> config, ITumblrSharpFactoryWrapper factory, ILogger<PostService> logger)
         {
             _policyProvider = policyProvider;
+            _logger = logger;
             _config = config.Value;
             var oauthToken = _config.Secure.TumblrOauthToken;
             var oauthSecret = _config.Secure.TumblrOauthSecret;
@@ -73,6 +77,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
                 {
                     var parameters = new MethodParameterSet { { "notes_info", true }, { "id", postId } };
                     var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
+                    _logger.LogDebug($"Client returned {posts} when querying for {postId} and {characterUrlIdentifier}");
                     var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
                     return result.FirstOrDefault();
                 },
