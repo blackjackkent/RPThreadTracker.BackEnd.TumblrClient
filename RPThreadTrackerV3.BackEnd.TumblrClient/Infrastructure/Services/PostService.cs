@@ -4,6 +4,7 @@
 // </copyright>
 
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
 {
@@ -77,7 +78,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
                 {
                     var parameters = new MethodParameterSet { { "notes_info", true }, { "id", postId } };
                     var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
-                    _logger.LogInformation($"Client returned {posts.ToString()} when querying for {postId} and {characterUrlIdentifier}");
+                    _logger.LogInformation($"Client returned {JsonConvert.SerializeObject(posts)} when querying for {postId} and {characterUrlIdentifier}");
                     var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
                     return result.FirstOrDefault();
                 },
