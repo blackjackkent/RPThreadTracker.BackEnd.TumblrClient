@@ -86,11 +86,11 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
 
                         var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
                         return result.FirstOrDefault();
-                    }
+                    }   
                     catch (Exception e)
                     {
-                        _logger.LogInformation(
-                            $"Client threw exception {e.Message} when querying for {postId} and {characterUrlIdentifier}");
+                        _logger.LogError(
+                            $"Client threw exception {e.Message} when querying for {postId} and {characterUrlIdentifier}", e);
                         return null;
                     }
                 },
