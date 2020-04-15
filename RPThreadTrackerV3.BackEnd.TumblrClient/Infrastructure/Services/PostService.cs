@@ -3,6 +3,7 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -76,11 +77,22 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
             return await _policyProvider.WrappedPolicy.ExecuteAsync(
                 async (context) =>
                 {
-                    var parameters = new MethodParameterSet { { "notes_info", true }, { "id", postId } };
-                    var posts = await _client.CallApiMethodAsync<Posts>(new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get, parameters), CancellationToken.None);
-                    var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
-                    _logger.LogInformation($"Client returned {JsonConvert.SerializeObject(result)} when querying for {postId} and {characterUrlIdentifier}");
-                    return result.FirstOrDefault();
+                    try
+                    {
+                        var parameters = new MethodParameterSet {{"notes_info", true}, {"id", postId}};
+                        var posts = await _client.CallApiMethodAsync<Posts>(
+                            new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get,
+                                parameters), CancellationToken.None);
+
+                        var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
+                        return result.FirstOrDefault();
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogInformation(
+                            $"Client threw exception {e.Message} when querying for {postId} and {characterUrlIdentifier}");
+                        return null;
+                    }
                 },
                 new Context("RetrieveApiDataByPost", new Dictionary<string, object>() { { "postId", postId }, { "characterUrlIdentifier", characterUrlIdentifier } }));
         }
