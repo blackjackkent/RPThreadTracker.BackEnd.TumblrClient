@@ -3,12 +3,9 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using System.Collections.Generic;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
 {
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Threading;
@@ -18,8 +15,10 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
     using DontPanic.TumblrSharp.OAuth;
     using FluentAssertions;
     using Interfaces;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Moq;
+    using Newtonsoft.Json;
     using Polly;
     using TumblrClient.Infrastructure.Services;
     using TumblrClient.Models.Configuration;
@@ -51,6 +50,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
             _mockConfigWrapper.SetupGet(c => c.Value).Returns(config);
             _mockPolicyProvider = new Mock<IPolicyProvider>();
             _mockPolicyProvider.SetupGet(p => p.WrappedPolicy).Returns(Policy.NoOpAsync<IPostAdapter>().WrapAsync(Policy.NoOpAsync()));
+            _mockLogger = new Mock<ILogger<PostService>>();
             _mockFactory = new Mock<ITumblrSharpFactoryWrapper>();
         }
 
