@@ -3,12 +3,9 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using System;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
@@ -18,6 +15,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
     using DontPanic.TumblrSharp.Client;
     using DontPanic.TumblrSharp.OAuth;
     using Interfaces;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Models.Configuration;
     using Models.DataModels;
@@ -39,6 +37,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
         /// <param name="policyProvider">The policy provider.</param>
         /// <param name="config">The application configuration.</param>
         /// <param name="factory">The Tumblr factory wrapper.</param>
+        /// <param name="logger">The application logger.</param>
         public PostService(IPolicyProvider policyProvider, IOptions<AppSettings> config, ITumblrSharpFactoryWrapper factory, ILogger<PostService> logger)
         {
             _policyProvider = policyProvider;
@@ -79,18 +78,27 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Infrastructure.Services
                 {
                     try
                     {
-                        var parameters = new MethodParameterSet {{"notes_info", true}, {"id", postId}};
+                        var parameters = new MethodParameterSet
+                        {
+                            { "notes_info", true },
+                            { "id", postId }
+                        };
                         var posts = await _client.CallApiMethodAsync<Posts>(
-                            new BlogMethod(characterUrlIdentifier, "posts/text", _client.GetToken(), HttpMethod.Get,
+                            new BlogMethod(
+                                characterUrlIdentifier,
+                                "posts/text",
+                                _client.GetToken(),
+                                HttpMethod.Get,
                                 parameters), CancellationToken.None);
 
                         var result = posts.Result.Select(p => new PostAdapter(p)).ToList();
                         return result.FirstOrDefault();
-                    }   
+                    }
                     catch (Exception e)
                     {
                         _logger.LogError(
-                            $"Client threw exception {e.Message} when querying for {postId} and {characterUrlIdentifier}", e);
+                            $"Client threw exception {e.Message} when querying for {postId} and {characterUrlIdentifier}",
+                            e);
                         return null;
                     }
                 },
