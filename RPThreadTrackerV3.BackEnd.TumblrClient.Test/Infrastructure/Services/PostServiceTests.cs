@@ -3,11 +3,9 @@
 // Licensed under the GPL v3 license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
 {
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Threading;
@@ -17,8 +15,10 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
     using DontPanic.TumblrSharp.OAuth;
     using FluentAssertions;
     using Interfaces;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Moq;
+    using Newtonsoft.Json;
     using Polly;
     using TumblrClient.Infrastructure.Services;
     using TumblrClient.Models.Configuration;
@@ -30,6 +30,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
         private readonly Mock<IPolicyProvider> _mockPolicyProvider;
         private readonly Mock<ITumblrSharpFactoryWrapper> _mockFactory;
         private readonly Mock<IOptions<AppSettings>> _mockConfigWrapper;
+        private readonly Mock<ILogger<PostService>> _mockLogger;
         private ApiMethod _passedMethod;
 
         public PostServiceTests()
@@ -49,6 +50,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
             _mockConfigWrapper.SetupGet(c => c.Value).Returns(config);
             _mockPolicyProvider = new Mock<IPolicyProvider>();
             _mockPolicyProvider.SetupGet(p => p.WrappedPolicy).Returns(Policy.NoOpAsync<IPostAdapter>().WrapAsync(Policy.NoOpAsync()));
+            _mockLogger = new Mock<ILogger<PostService>>();
             _mockFactory = new Mock<ITumblrSharpFactoryWrapper>();
         }
 
@@ -72,7 +74,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
             public void InitializesClientFromConfiguration()
             {
                 // Act
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Assert
                 postService.Should().NotBe(null);
@@ -94,7 +96,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                     PostId = null,
                     CharacterUrlIdentifier = "blackjackkent"
                 };
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetPost(request);
@@ -112,7 +114,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                     PostId = "12345",
                     CharacterUrlIdentifier = null
                 };
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetPost(request);
@@ -132,7 +134,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                 };
                 var mockResult = new Posts() { Result = System.Array.Empty<BasePost>() };
                 InitMockClient(mockResult);
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetPost(request);
@@ -170,7 +172,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                     }
                 };
                 InitMockClient(mockResult);
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetPost(request);
@@ -194,7 +196,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                     Result = new List<BasePost>().ToArray()
                 };
                 InitMockClient(mockResult);
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 await postService.GetPost(request);
@@ -212,7 +214,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                 // Arrange
                 var mockResult = new Posts() { Result = System.Array.Empty<BasePost>() };
                 InitMockClient(mockResult);
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetNewsPosts();
@@ -244,7 +246,7 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Test.Infrastructure.Services
                     }
                 };
                 InitMockClient(mockResult);
-                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object);
+                var postService = new PostService(_mockPolicyProvider.Object, _mockConfigWrapper.Object, _mockFactory.Object, _mockLogger.Object);
 
                 // Act
                 var result = await postService.GetNewsPosts();

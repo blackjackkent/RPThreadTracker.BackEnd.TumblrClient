@@ -14,10 +14,7 @@
   test_script:
     - cmd: sh ./coverage.sh
   after_test:
-    ps: |
-      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml"
+    - cmd: curl -s https://codecov.io/bash | bash -s -- -f coverage.xml
   artifacts:
     - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
       name: WebSite
@@ -47,10 +44,7 @@
   test_script:
     - cmd: sh ./coverage.sh
   after_test:
-    ps: |
-      $env:PATH = 'C:\msys64\usr\bin;' + $env:PATH
-      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
-      bash codecov.sh -f "coverage.xml"
+    - cmd: curl -s https://codecov.io/bash | bash -s -- -f coverage.xml
   artifacts:
     - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
       name: WebSite
