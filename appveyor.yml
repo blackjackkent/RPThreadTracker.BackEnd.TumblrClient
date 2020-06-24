@@ -14,7 +14,7 @@
   test_script:
     - cmd: sh ./coverage.sh
   after_test:
-    sh: (curl -s https://codecov.io/bash)
+    - cmd: curl -s https://codecov.io/bash | bash -s -- -f coverage.xml
   artifacts:
     - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
       name: WebSite
@@ -44,7 +44,7 @@
   test_script:
     - cmd: sh ./coverage.sh
   after_test:
-    sh: (curl -s https://codecov.io/bash)
+    - cmd: curl -s https://codecov.io/bash | bash -s -- -f coverage.xml
   artifacts:
     - path: '\RPThreadTrackerV3.BackEnd.TumblrClient\bin\Release\netcoreapp2.1\publish'
       name: WebSite
