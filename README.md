@@ -82,11 +82,3 @@ This application has no external dependencies besides the Tumblr API. Make sure 
 Rosalind Wills – [@blackjackkent](https://twitter.com/blackjackkent) – rosalind@blackjack-software.com
 
 [https://github.com/blackjackkent/RPThreadTracker.BackEnd.TumblrClient](https://github.com/blackjackkent/RPThreadTracker.BackEnd.TumblrClient/)
-
-## Contributing
-
-1. Fork it (<https://github.com/blackjackkent/RPThreadTracker.BackEnd.TumblrClient/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
