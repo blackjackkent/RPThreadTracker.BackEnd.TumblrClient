@@ -19,7 +19,7 @@ jobs:
         with:
           dotnet-version: 2.2.207
       - run: dotnet restore RPThreadTrackerV3.BackEnd.TumblrClient.sln --verbosity m
-      - run: dotnet publish RPThreadTrackerV3.BackEnd.TumblrClient.sln -c Release
+      - run: dotnet publish RPThreadTrackerV3.BackEnd.TumblrClient/RPThreadTrackerV3.BackEnd.TumblrClient.csproj -c Release
       - run: sh ./coverage.sh
       - run: curl -s https://codecov.io/bash | bash -s -- -f coverage.xml
   notify:
