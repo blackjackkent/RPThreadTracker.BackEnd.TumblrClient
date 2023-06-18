@@ -44,7 +44,12 @@ namespace RPThreadTrackerV3.BackEnd.TumblrClient.Models.DataModels
             get
             {
                 var textPost = _post as TextPost;
-                return textPost?.Title;
+                var title = textPost?.Title;
+                if (title != null && title != string.Empty)
+                {
+                    return title;
+                }
+                return textPost?.Summary;
             }
         }
 

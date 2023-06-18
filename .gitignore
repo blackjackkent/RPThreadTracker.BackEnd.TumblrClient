@@ -322,3 +322,4 @@ reports/
 coverage.xml
 codecov.sh
 Documentation/api/RPThreadTrackerV3.BackEnd*.yml
+.vscode
